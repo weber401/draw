@@ -1,9 +1,9 @@
-alert('hello new here');
 
-element.addEventListener('click', function(e) {
-    console.log('This element has been clicked!');
-    console.log(e.target.innerHTML);
-    // render_emails('56');
-});
+onmousemove = function(e){
+    console.log("mouse location:", e.clientX, e.clientY);
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(e.clientX,e.clientY,4,4);
+}
 
- 
