@@ -1,4 +1,6 @@
 
+document.getElementById("mycanvas").addEventListener("mousehover", draw);
+function draw(){
 onmousemove = function(e){
     console.log("mouse location:", e.clientX, e.clientY);
     var canvas = document.getElementById("myCanvas");
@@ -6,4 +8,4 @@ onmousemove = function(e){
     ctx.fillStyle = "#FF0000";
     ctx.fillRect(e.clientX,e.clientY,4,4);
 }
-
+};
