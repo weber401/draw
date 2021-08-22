@@ -1,11 +1,49 @@
 
 // document.getElementById("mycanvas").addEventListener("mousehover", draw);
 // function draw(){
-onmousemove = function(e){
-    console.log("mouse location:", e.clientX, e.clientY);
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(e.clientX,e.clientY,4,4);
-}
+
+
+let drawing = false;
+let x = 0;
+let y = 0;
+
+
+const mycanvas = document.getElementById('myCanvas');
+const context = mycanvas.getContext('2d');
+console.log("what");
+
+mycanvas.addEventListener('mousedown', e => {
+    x = e.offsetX;
+    y = e.offsetY;
+    console.log("mousedown");
+    drawing = true;
+});
+
+mycanvas.addEventListener('mousemove', e => {
+    if (drawing === true) {
+        drawline(context, x, y, e.offsetX, e.offsetY);
+        x = e.offsetX;
+        y = e.offsetY;
+    }
+});
+
+mycanvas.addEventListener('mouseup', e => {
+    if (drawing === true) {
+        drawline(context, x, y, e.offsetX, e.offsetY);
+        x = 0;
+        y = 0;
+        drawing = false;
+    }
+});
+
+function drawline(context, x1, y1, x2, y2) {
+    context.beginPath();
+    context.strokeStyle = 'black';
+    context.lineWidth = 1;
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+    context.closePath();
+  }
+
 
