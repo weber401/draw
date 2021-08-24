@@ -47,7 +47,8 @@ function drawline(context, x1, y1, x2, y2) {
   }
 
 document.querySelector('#clear').addEventListener('click', clearcanvas);
-  
+
+//this is just to make sure things are all right
 function clearcanvas() {
     context.clearRect(0, 0, mycanvas.width, mycanvas.height);
 }
