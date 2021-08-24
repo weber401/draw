@@ -1,0 +1,24 @@
+
+#heading{
+    display: flex;
+    margin: 5px;
+    align-items: center;
+}
+
+#icons{
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    align-items:flex-start;
+    flex-wrap: nowrap;
+}
+
+#icons > button{
+    margin: 5px;
+}
+
+#myCanvas {
+    background-color:bisque;
+    align-items: center;
+}
+
