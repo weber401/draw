@@ -18,25 +18,21 @@ let brush = false;
 
 //listen for different events
 document.querySelector('#pencil').addEventListener('click', ()=> {
-    drawing = true;
     pencil = true;
     eraser = false;
     line = false;
-    alert("here, here");
 });
 
 document.querySelector('#line').addEventListener('click', ()=> {
     line = true;
     eraser = false;
     pencil = false;
-    alert("here, here");
 });
 
 document.querySelector('#eraser').addEventListener('click', ()=> {
     line = false;
     eraser = true;
     pencil = false;
-    alert("here, here");
 });
 
 
@@ -68,6 +64,9 @@ mycanvas.addEventListener('mouseup', e => {
         x = 0;
         y = 0;
         drawing = false;
+    }
+    if (line === true) {
+        drawline(context, x, y, e.offsetX, e.offsetY);
     }
 });
 
