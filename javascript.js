@@ -31,6 +31,7 @@ document.querySelector('#pencil').addEventListener('click', ()=> {
     pencil = true;
     eraser = false;
     line = false;
+    alert('hello hello hello');
 });
 
 document.querySelector('#line').addEventListener('click', ()=> {
