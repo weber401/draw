@@ -7,10 +7,15 @@ let drawing = false;
 let x = 0;
 let y = 0;
 
+//for mobile touch response
+let x_touch = 0;
+let y_touch = 0;
+
 //jsut for some debugging
 let mousedown = false;
 let mousemove = false;
 let mouseup = false;
+
 
 
 // boolean check for different tools
@@ -57,12 +62,33 @@ mycanvas.addEventListener('mousedown', e => {
     
 });
 
+mycanvas.addEventListener('touchstart', e => {
+    document.querySelector('#status-mouse-move').innerHTML = "mousemove: True";
+    var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+    x_touch = touch.pageX;
+    y_touch = touch.pageY;
+    if (drawing === true) {
+        drawline(context, x_touch, y_touch, touch.pageX, touch.pageY);
+        x_touch = touch.pageX;
+        y_touch = touch.pageY;
+    }
+});
+
 mycanvas.addEventListener('mousemove', e => {
     document.querySelector('#status-mouse-move').innerHTML = "mousemove: True";
     if (drawing === true) {
         drawline(context, x, y, e.offsetX, e.offsetY);
         x = e.offsetX;
         y = e.offsetY;
+    }
+});
+
+mycanvas.addEventListener('touchmove', e => {
+    document.querySelector('#status-mouse-move').innerHTML = "mousemove: True";
+    if (drawing === true) {
+        drawline(context, x_touch, y_touch, touch.pageX, touch.pageY);
+        x_touch = touch.pageX;
+        y_touch = touch.pageY;
     }
 });
 
@@ -77,6 +103,20 @@ mycanvas.addEventListener('mouseup', e => {
     }
     if (line === true) {
         drawline(context, x, y, e.offsetX, e.offsetY);
+    }
+});
+
+mycanvas.addEventListener('touchend', e => {
+    document.querySelector('#status-mouse-down').innerHTML = "mouse-down: false";
+    document.querySelector('#status-mouse-up').innerHTML = "mouse-up: true";
+    if (drawing === true) {
+        drawline(context, x_touch, y_touch, touch.pageX, touch.pageY);
+        x = 0;
+        y = 0;
+        drawing = false;
+    }
+    if (line === true) {
+        drawline(context, x_touch, y_touch, touch.pageX, touch.pageY);
     }
 });
 
