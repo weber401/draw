@@ -41,7 +41,9 @@ document.querySelector('#line').addEventListener('click', ()=> {
 });
 
 document.querySelector('#eraser').addEventListener('click', ()=> {
+    document.querySelector('#animate').style.display= 'block';
     line = false;
+    myMove();
     eraser = true;
     pencil = false;
 });
@@ -139,4 +141,33 @@ function clearcanvas() {
     context.clearRect(0, 0, mycanvas.width, mycanvas.height);
 }
 
+
+function myMove() {
+    let id = null;
+    const elem = document.getElementById("animate");   
+    let pos = 0;
+    clearInterval(id);
+    id = setInterval(frame, 5);
+    function frame() {
+      if (pos <= -2) {
+          pos = pos +Math.floor(Math.random() * 10);
+        elem.style.top = "px" + pos; 
+        elem.style.left = pos + "px"; 
+      }
+      else if (pos >= 500){
+        pos = pos + Math.floor(Math.random() * 10);
+        elem.style.top =  pos - "px"; 
+        elem.style.left = pos - "px";
+      } 
+      else {
+        pos++; 
+        elem.style.top = pos + "px"; 
+        elem.style.left = pos + "px"; 
+        var img = document.createElement("img");
+        img.src = "eraser.jpg";
+        var src = document.getElementById("animate");
+        src.appendChild(img);
+      }
+    }
+  }
 

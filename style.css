@@ -22,3 +22,9 @@
     align-items: center;
 }
 
+#animate {
+    display: none;
+    width: auto;
+    height: auto;
+    position: absolute;
+  }
