@@ -1,8 +1,11 @@
 
 // document.getElementById("mycanvas").addEventListener("mousehover", draw);
 // function draw(){
+
 // #TODO: TOOL `SELECT`
 // #TODO: ERASER
+// #TODO: ICON
+
 let drawing = false;
 let x = 0;
 let y = 0;

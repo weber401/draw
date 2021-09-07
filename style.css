@@ -1,4 +1,6 @@
-
+body{
+    cursor: url('assests\cursor-handwriting-pen-pointer-tool-writing-icon-845793.png');
+}
 #heading{
     display: flex;
     margin: 5px;
